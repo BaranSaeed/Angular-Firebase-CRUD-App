@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">PropListings</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav navbar-left">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="(afAuth.authState | async)">
+            <a class="nav-link" [routerLink]="['/listings']">Listings</a>
+          </li>
+          <li class="nav-item" *ngIf="(afAuth.authState | async)"> 
+            <a class="nav-link" [routerLink]="['/add-listing']">Add Listing</a>
+          </li>
+        </ul>
+      </div>
+        <ul class="navbar-nav navbar-right">
+          <li *ngIf="!(afAuth.authState | async)"> 
+            <a class="nav-link" (click)="login()" >Login</a>
+          </li>
+          <li *ngIf="(afAuth.authState | async)">
+            <a class="nav-link" (click)="logout()" >Logout</a>
+          </li>
+        </ul>
+    </nav>

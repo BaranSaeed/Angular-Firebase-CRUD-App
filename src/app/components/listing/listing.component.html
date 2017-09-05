@@ -1,0 +1,22 @@
+<div *ngIf="listing">
+  <a [routerLink]="['/listings']">Go Back</a>
+  <br>
+  <h2 class="page-header">{{listing.title}} <small>{{listing.city}}</small></h2>
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{imageURL}}" style="width:100%" class="thumbnail" alt="">
+    </div>
+
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item">Owner: {{listing.owner}}</li>
+        <li class="list-group-item">Bedrooms: {{listing.bedrooms}}</li>
+        <li class="list-group-item">Type: {{listing.type}}</li>
+        <li class="list-group-item">Price: {{listing.price}}</li>
+      </ul>
+    </div>
+    <br>
+    <a class="btn btn-primary" [routerLink]="['/edit-listing/'+listing.$key]">Edit</a>
+    <a class="btn btn-danger" (click)="onDeleteClick()">Delete</a>
+  </div>
+</div>
